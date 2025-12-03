@@ -1,0 +1,1 @@
+A platform for managing projects and tasks with tier level access

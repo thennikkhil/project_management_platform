@@ -1,0 +1,19 @@
+{
+  "name": "project-management-platform",
+  "version": "1.0.0",
+  "description": "A platform for managing projects and tasks with tier level access",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "projectmanagement"
+  ],
+  "author": "Nikhil Kumar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "prettier": "3.7.4"
+  }
+}
