@@ -32,7 +32,6 @@ const userSchema = new Schema(
         },
         fullName: {
             type: String,
-            required: true,
             trim: true,
         },
         password: {
@@ -59,24 +58,23 @@ const userSchema = new Schema(
             type: Date
         }
     },
-        {
-            timestamps: true,
-        },
+    {
+        timestamps: true,
+    }
 )
 
 userSchema.pre("save", async function(next) {
-    if(!this.isModified("password")) return next()
+    if(!this.isModified("password")) return;
     this.password = await bycrpt.hash(this.password, 10)
-    next()
+    // next();
 })
 
 userSchema.methods.isPasswordCorrect = async function(password) {
     return await bycrpt.compare(password, this.password)
 }
 
-
 userSchema.methods.generateAccessToken = function(){
-    jwt.sign(
+    return jwt.sign(
         {
             _id: this._id,
             email: this.email,
@@ -90,7 +88,7 @@ userSchema.methods.generateAccessToken = function(){
 }
 
 userSchema.methods.generateRefreshToken = function() {
-    jwt.sign({
+    return jwt.sign({
         _id: this._id,
         email: this.email,
         username: this.username

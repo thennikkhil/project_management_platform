@@ -2,7 +2,7 @@ import Mailgen from "mailgen"
 import nodemailer from "nodemailer"
 
 const sendEmail = async (options) => {
-    new Mailgen ({
+    const mailGenerator = new Mailgen ({
         theme: "default",
         product: {
             name: "Task Manager",
@@ -19,13 +19,13 @@ const sendEmail = async (options) => {
         port: process.env.MAILTRAP_SMTP_PORT,
         auth:{
             user: process.env.MAILTRAP_SMTP_USER,
-            pass: process.env.MAILTRAP_SMTP_PASSWORD
+            pass: process.env.MAILTRAP_SMTP_PASS
         }
     })
 
     const mail = {
         from: "mail.taskmanager@example.com",
-        to: options.mail,
+        to: options.email,
         subject: options.subject,
         text: emailTextual,
         html: emailHtml
