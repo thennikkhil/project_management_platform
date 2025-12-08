@@ -5,12 +5,12 @@ const userRegisterValidator = () => {
     return [
         body("email")
             .trim()
-    .notEmpty()
+            .notEmpty()
             .withMessage("Email is required")
             .isEmail()
             .withMessage("Email is invalid"),
     
-        body("useranme")
+        body("username")
             .trim()
             .notEmpty()
             .withMessage("Username is required")
@@ -27,7 +27,6 @@ const userRegisterValidator = () => {
         body("fullName")
             .optional()
             .trim()
-
     ]
 }
 
